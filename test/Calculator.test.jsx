@@ -233,4 +233,24 @@ describe('Calculator', () => {
 		const errorMessage = 'Unexpected end of expression (char 3)'
 		expect(input.value).toBe(errorMessage)
 	})
+
+	it('should be able to perfom another operation after an error', () => {
+		render(<Calculator />)
+
+		const one = screen.getByText('1')
+		fireEvent.click(one)
+
+		const openParenthesis = screen.getByText(parenthesis[0])
+		fireEvent.click(openParenthesis)
+
+		const equal = screen.getByText(equalSign)
+		fireEvent.click(equal)
+
+		const input = screen.getByRole('textbox')
+		const errorMessage = 'Unexpected end of expression (char 3)'
+		expect(input.value).toBe(errorMessage)
+
+		fireEvent.click(one)
+		expect(input.value).toBe('1')
+	})
 })

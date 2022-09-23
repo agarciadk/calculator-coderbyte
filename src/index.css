@@ -1,6 +1,6 @@
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 24px;
   font-weight: 400;
 
@@ -14,15 +14,6 @@
   -webkit-text-size-adjust: 100%;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
 body {
   margin: 0;
   display: flex;
@@ -34,6 +25,10 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  background: linear-gradient(45deg, orange, grey);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 button {
@@ -41,14 +36,15 @@ button {
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
-  font-weight: 500;
+  font-weight: 700;
   font-family: inherit;
   background-color: #1a1a1a;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: opacity 0.25s;
+  color:rgba(255, 255, 255, 0.87)
 }
 button:hover {
-  border-color: #646cff;
+  opacity: 0.7;
 }
 button:focus,
 button:focus-visible {
@@ -69,26 +65,48 @@ button:focus-visible {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(6, 1fr);
+  gap: 10px;
+
+  background-color: grey;
+  padding: 1.2rem 0.75rem;
+  border-radius: 8px;
+
+  border: 1px solid #707070
 }
+
 .input {
   grid-column: 1 / 5;
   grid-row: 1;
+
+  border-radius: 8px;
+  border: none;
+  text-align: end;
+  font-size: 1rem;
+  padding-right: 1rem;
 }
 .openParenthesis {
   grid-column: 1;
   grid-row: 2;
+
+  background-color: darkgrey;
 }
-.closeParenthesis {
+.closedParenthesis {
   grid-column: 2;
   grid-row: 2;
+
+  background-color: darkgrey;
 }
 .clearSign {
   grid-column: 3;
   grid-row: 2;
+
+  background-color: darkgrey;
 }
 .operation-division {
   grid-column: 4;
   grid-row: 2;
+
+  background-color: darkgrey;
 }
 .number-7 {
   grid-column: 1;
@@ -105,6 +123,8 @@ button:focus-visible {
 .operation-multiplication {
   grid-column: 4;
   grid-row: 3;
+
+  background-color: darkgrey;
 }
 .number-4 {
   grid-column: 1;
@@ -121,6 +141,8 @@ button:focus-visible {
 .operation-minus {
   grid-column: 4;
   grid-row: 4;
+
+  background-color: darkgrey;
 }
 .number-1 {
   grid-column: 1;
@@ -137,10 +159,14 @@ button:focus-visible {
 .operation-plus {
   grid-column: 4;
   grid-row: 5;
+
+  background-color: darkgrey;
 }
 .commaSign {
   grid-column: 1;
   grid-row: 6;
+
+  background-color: darkgrey;
 }
 .number-0 {
   grid-column: 2;
@@ -149,4 +175,6 @@ button:focus-visible {
 .equalSign {
   grid-column: 3 / 5;
   grid-row: 6;
+
+  background-color: orange;
 }

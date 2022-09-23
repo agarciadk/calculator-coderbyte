@@ -34,8 +34,16 @@ const INITIAL_STATE = ''
 
 export const Calculator = (): JSX.Element => {
 	const [value, setValue] = useState(INITIAL_STATE)
+	const [error, setError] = useState(false)
 
-	const createHandleClick = (op: string) => () => setValue(value.concat(op))
+	const createHandleClick = (op: string) => () => {
+		if (error) {
+			setValue(op)
+			setError(false)
+		} else {
+			setValue(value.concat(op))
+		}
+	}
 
 	const evalInputs = (): void => {
 		if (value.length === 0) return
@@ -45,6 +53,7 @@ export const Calculator = (): JSX.Element => {
 			setValue(evaluate(value).toString())
 		} catch (e: any) {
 			setValue(e.message)
+			setError(true)
 		}
 	}
 
@@ -59,7 +68,7 @@ export const Calculator = (): JSX.Element => {
 		<>
 			<h1>Calculator</h1>
 			<div className='calculator-wrapper'>
-				<input className='input' value={value} readOnly />
+				<input className='input' style={ error ? { color: 'red', fontSize: '0.75rem' } : {}} value={value} readOnly />
 				{
 					parenthesis.map((parenthesisItem, idx) => (
 						<button
