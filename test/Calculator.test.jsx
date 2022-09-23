@@ -30,7 +30,7 @@ describe('Calculator', () => {
 		numbers.forEach(number => screen.getByText(number))
 	})
 
-	it('should render four rows', () => {
+	it('should render four rows of numbers', () => {
 		render(<Calculator />)
 
 		const rows = screen.getAllByRole('row')
@@ -41,7 +41,7 @@ describe('Calculator', () => {
 		render(<Calculator />)
 
 		operations.forEach(operation => {
-			screen.getByText(operation)
+			screen.getByText(operation.sign)
 		})
 	})
 

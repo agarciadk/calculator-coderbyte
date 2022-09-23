@@ -61,3 +61,92 @@ button:focus-visible {
   padding: 2rem;
   text-align: center;
 }
+
+.dContents {
+  display: contents;
+}
+.calculator-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+}
+.input {
+  grid-column: 1 / 5;
+  grid-row: 1;
+}
+.openParenthesis {
+  grid-column: 1;
+  grid-row: 2;
+}
+.closeParenthesis {
+  grid-column: 2;
+  grid-row: 2;
+}
+.clearSign {
+  grid-column: 3;
+  grid-row: 2;
+}
+.operation-division {
+  grid-column: 4;
+  grid-row: 2;
+}
+.number-7 {
+  grid-column: 1;
+  grid-row: 3;
+}
+.number-8 {
+  grid-column: 2;
+  grid-row: 3;
+}
+.number-9 {
+  grid-column: 3;
+  grid-row: 3;
+}
+.operation-multiplication {
+  grid-column: 4;
+  grid-row: 3;
+}
+.number-4 {
+  grid-column: 1;
+  grid-row: 4;
+}
+.number-5 {
+  grid-column: 2;
+  grid-row: 4;
+}
+.number-6 {
+  grid-column: 3;
+  grid-row: 4;
+}
+.operation-minus {
+  grid-column: 4;
+  grid-row: 4;
+}
+.number-1 {
+  grid-column: 1;
+  grid-row: 5;
+}
+.number-2 {
+  grid-column: 2;
+  grid-row: 5;
+}
+.number-3 {
+  grid-column: 3;
+  grid-row: 5;
+}
+.operation-plus {
+  grid-column: 4;
+  grid-row: 5;
+}
+.commaSign {
+  grid-column: 1;
+  grid-row: 6;
+}
+.number-0 {
+  grid-column: 2;
+  grid-row: 6;
+}
+.equalSign {
+  grid-column: 3 / 5;
+  grid-row: 6;
+}

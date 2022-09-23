@@ -7,14 +7,31 @@ const rows = [
 	['1', '2', '3'],
 	['0']
 ]
-
 export const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-export const operations = ['+', '-', '*', '/']
+export const operations = [
+	{
+		label: 'plus',
+		sign: '+'
+	},
+	{
+		label: 'minus',
+		sign: '-'
+	},
+	{
+		label: 'multiplication',
+		sign: '*'
+	},
+	{
+		label: 'division',
+		sign: '/'
+	}
+]
 export const equalSign = '='
 export const clearSign = 'C'
 export const commaSign = '.'
 export const parenthesis = ['(', ')']
 const INITIAL_STATE = ''
+
 export const Calculator = (): JSX.Element => {
 	const [value, setValue] = useState(INITIAL_STATE)
 
@@ -39,30 +56,49 @@ export const Calculator = (): JSX.Element => {
 	const reset = (): void => setValue(INITIAL_STATE)
 
 	return (
-		<div>
+		<>
 			<h1>Calculator</h1>
-			<input value={value} readOnly />
-			<div role='grid'>
-				{rows.map((row, idx) => (
-					<div key={idx} role='row'>
-						{row.map(number => <button onClick={createHandleClick(number)} key={number}>{number}</button>)}
-					</div>
+			<div className='calculator-wrapper'>
+				<input className='input' value={value} readOnly />
+				{
+					parenthesis.map((parenthesisItem, idx) => (
+						<button
+							className={idx === 0 ? 'openParenthesis' : 'closedParenthesis'}
+							onClick={createHandleClick(parenthesisItem)}
+							key={parenthesisItem}
+						>
+							{parenthesisItem}
+						</button>
+					))
+				}
+				{
+					rows.map((row, idx) => (
+						<div className='dContents' key={idx} role='row'>
+							{row.map(number => (
+								<button
+									className={`number-${number}`}
+									onClick={createHandleClick(number)}
+									key={number}
+								>
+									{number}
+								</button>
+							))}
+						</div>
+					))
+				}
+				{operations.map((operation) => (
+					<button
+						className={`operation-${operation.label}`}
+						onClick={createHandleClick(operation.sign)}
+						key={operation.label}
+					>
+						{operation.sign}
+					</button>
 				))}
-				<button onClick={createHandleClick(commaSign)}>{commaSign}</button>
-				{
-					operations.map(operation => (
-						<button onClick={createHandleClick(operation)} key={operation}>{operation}</button>
-					))
-				}
-				{
-					parenthesis.map(parenthesisItem => (
-						<button onClick={createHandleClick(parenthesisItem)} key={parenthesisItem}>{parenthesisItem}</button>
-					))
-				}
+				<button className='commaSign' onClick={createHandleClick(commaSign)}>{commaSign}</button>
+				<button className='equalSign' onClick={evalInputs}>{equalSign}</button>
+				<button className='clearSign' onClick={reset}>{clearSign}</button>
 			</div>
-
-			<button onClick={evalInputs}>{equalSign}</button>
-			<button onClick={reset}>{clearSign}</button>
-		</div>
+		</>
 	)
 }
